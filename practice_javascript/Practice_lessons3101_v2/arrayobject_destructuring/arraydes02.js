@@ -3,8 +3,12 @@
 You have to use array destructuring and call the variables firstName and lastName.
  * @param {string[]} user
  */
-const getFullName = (user) => {};
+const getFullName = (user) => {
+  const fn = user[0];
+  const ln = user[1];
+  return `${fn} ${ln}`;
+};
 
 // Sample usage - do not modify
-console.log(getFullName(['Sam', 'Blue'])); // "Sam Blue"
-console.log(getFullName(['Alex', 'Green'])); // "Alex Green"
+console.log(getFullName(["Sam", "Blue"])); // "Sam Blue"
+console.log(getFullName(["Alex", "Green"])); // "Alex Green"
