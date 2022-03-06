@@ -8,7 +8,9 @@
 
     <script>
       // GET retrieve all to-do's
-      fetch('https://jsonplaceholder.typicode.com/todos');
+      const apiJson = fetch("https://jsonplaceholder.typicode.com/todos").then(
+        (response) => response.json()
+      );
 
       // will return all resources
 
@@ -22,9 +24,22 @@
             "completed": false
         }
         */
-
+      const specificIDs = () => {
+        apiJson.then((data) =>
+          console.log(data.find((specificID) => specificID.id === 5))
+        );
+      };
+      specificIDs();
       // POST adds a random id to the object sent
 
+      const randomObj = () => {
+        apiJson.then((data) => {
+          let a = { userId: 1, title: "clean room", completed: false, id: 201 };
+          data.push(a);
+          console.log(data[data.length - 1]);
+        });
+      };
+      randomObj();
       /* will return
         {
             "userId": 1,
@@ -33,7 +48,15 @@
             "id": 201
         }
         */
+      const changeTaskName = () => {
+        apiJson.then((data) => {
+          let tasks = data.find((task) => task.id === 5);
+          tasks.title = "hello task";
+          console.log(tasks);
+        });
+      };
 
+      changeTaskName();
       // PUT to the resource with id = 5 to change the name of task
 
       /* will return
@@ -56,10 +79,38 @@
             "completed": true
         }
         */
+      const idCompleteOne = () => {
+        apiJson.then((data) => {
+          let taskOne = data.find((task) => task.id === 1);
+          taskOne.completed = true;
+          console.log(taskOne);
+        });
+      };
+
+      idCompleteOne();
 
       // DELETE task with id = 1
-
+      const deleteIdOne = () => {
+        apiJson.then((data) => {
+          let taskOne = data.find((task) => task.id === 1);
+          taskOne = {};
+          console.log(taskOne);
+        });
+      };
+      deleteIdOne();
       // empty response: {}
+      // another approach
+      const deleteIDone = () => {
+        apiJson.then((data) => {
+          taskone = data.find((task) => task.id === 1);
+          delete taskone.userId;
+          delete taskone.id;
+          delete taskone.title;
+          delete taskone.completed;
+          console.log(taskone);
+        });
+      };
+      deleteIDone();
     </script>
   </body>
 </html>

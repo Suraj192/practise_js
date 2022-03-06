@@ -21,7 +21,7 @@ const API = new FetchWrapper(
 const getChapters = () => {
   // TODO
   API.get("chapters.json").then((data) => {
-    //console.log(data);
+    console.log(data);
     // for (let i = 0; i < data.length; i++) {
     //   if (data[i].isCompleted === true) {
     //     console.log(data[i]);
