@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
 
@@ -11,6 +11,8 @@ This willItRain function receives a JSON string from a fictive weather API.
  */
 const willItRain = (weatherApiResponse) => {
   // write it here
+  let obj = JSON.parse(weatherApiResponse);
+  return obj.now.rainExpected;
 };
 
 // Sample usage - do not modify
