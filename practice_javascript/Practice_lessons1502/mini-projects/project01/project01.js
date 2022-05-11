@@ -417,15 +417,28 @@ The search should be case-insensitive (so, writing luna e-1 no.1 in the search i
 Also, leading and trailing spaces in the search input should be ignored. */
 
 //TODOs
-const search = document.querySelector("#app-search");
-const results = document.querySelector("#result-list");
 
-const renderSearchResults = (query = "") => {
-  const cleanuptheSearchquery = query.trim().toLowerCase();
+constsearch = document.getElementById("app-search");
+constresults = document.getElementById("results-list");
+constrenderSearchResults = (query = "") =>  {​​​​​​​
+//cleanuptheSearchquery ignoring leading and trailing spaces
+//e.g. trim(), toLowerCase()
+constcleanupSearchquery = query.trim().toLowerCase();
+//filter the data e.g data.filter(//pass cleanupSearchquery)
+constfilteredData = data.filter((item) =>
+item.spacecraft.toLowerCase().includes(cleanupSearchquery)
+ );
+results.innerHTML = "";
+//loop the filter data for each of those list items of spacecraft
+filteredData.forEach((item) => {​​​​​​​
+//e.g.use insertAdjacentHTML
+ 
+constitemHtml = `<li>${​​​​​​​item.spacecraft}​​​​​​​</li>`;
+ 
+results.insertAdjacentHTML("beforeend", itemHtml);
+ }​​​​​​​);
+}​​​​​​​;
+search.addEventListener("keyup", () => {​​​​​​​
+renderSearchResults(search.value);
+}​​​​​​​);
 
-  const filterData = data.filter((item) =>
-    item.spacecraft.toLocaleLowerCase().includes(cleanuptheSearchquery)
-  );
-  // not complete
-  results.innerHTML = "";
-};
